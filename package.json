@@ -79,7 +79,7 @@
         "ember-window-mock": "^0.9.0",
         "ember-wormhole": "^0.6.0",
         "imask": "^6.4.3",
-        "intl-tel-input": "^18.1.3",
+        "intl-tel-input": "^18.2.1",
         "autoprefixer": "^10.4.15",
         "postcss-at-rules-variables": "^0.3.0",
         "postcss-conditionals-renewed": "^1.0.0",

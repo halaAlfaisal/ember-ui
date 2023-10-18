@@ -1,6 +1,6 @@
 <div class="grid grid-cols-2 gap-2 coordinates-input" ...attributes>
-    <Input class="w-full form-input" @type="text" placeholder="Latitude" aria-label="Latitude" @value={{this.latitude}} />
-    <Input class="w-full form-input" @type="text" placeholder="Longitude" aria-label="Longitude" @value={{this.longitude}} />
+    <Input class="w-full form-input" @type="text" placeholder="Latitude" aria-label="Latitude" @value={{this.latitude}} {{on "change" this.handleLat }} />
+    <Input class="w-full form-input" @type="text" placeholder="Longitude" aria-label="Longitude" @value={{this.longitude}} {{on "change" this.handleLng }} />
 </div>
 <div class="my-1">
     <BasicDropdown ...attributes @verticalPosition="top" @horizontalPosition="left" @renderInPlace={{true}} as |dd|>

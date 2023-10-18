@@ -11,7 +11,7 @@ export default class PhoneInputComponent extends Component {
     @action setupIntlTelInput(element) {
         this.iti = intlTelInput(element, {
             customContainer: `w-full ${this.args.wrapperClass ?? ''}`,
-            initialCountry: 'auto',
+            initialCountry: 'kw',
             geoIpLookup: (success) => {
                 this.fetch.get('lookup/whois').then((response) => {
                     success(response.country_code);

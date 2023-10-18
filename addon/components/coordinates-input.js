@@ -5,8 +5,8 @@ import { action } from '@ember/object';
 import { isBlank } from '@ember/utils';
 import { isArray } from '@ember/array';
 
-const DEFAULT_LATITUDE = 1.3521;
-const DEFAULT_LONGITUDE = 103.8198;
+const DEFAULT_LATITUDE = 29.115594;
+const DEFAULT_LONGITUDE = 47.90927;
 
 export default class CoordinatesInputComponent extends Component {
     @service fetch;
@@ -31,6 +31,26 @@ export default class CoordinatesInputComponent extends Component {
 
     isPoint(point) {
         return typeof point === 'object' && !isBlank(point.type) && point.type === 'Point' && isArray(point.coordinates);
+    }
+
+    @action handleLat(event) {
+        const { onCoordsUpdated } = this.args;
+        const value = parseFloat(event.target.value);
+        this.mapLat = value;
+        this.latitude = value;
+        if (typeof onCoordsUpdated === 'function') {
+            onCoordsUpdated({ latitude: value, longitude: parseFloat(this.longitude) });
+        }
+    }
+
+    @action handleLng(event) {
+        const { onCoordsUpdated } = this.args;
+        const value = parseFloat(event.target.value);
+        this.mapLng = value;
+        this.longitude = value;
+        if (typeof onCoordsUpdated === 'function') {
+            onCoordsUpdated({ latitude: parseFloat(this.latitude), longitude: value });
+        }
     }
 
     @action setInitialValueFromPoint(point) {
