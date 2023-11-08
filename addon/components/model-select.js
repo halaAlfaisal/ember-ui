@@ -263,7 +263,21 @@ export default class ModelSelectComponent extends Component {
             _options.unshiftObjects([createOption]);
         }
 
-        this._options = _options;
+        if (this.args.modelName === 'driver' && this.args.computeDistanceInKilometers && this.args.coordinates) {
+            const orderCoordinates = this.args.coordinates;
+
+            const optionsArray = _options.toArray();
+            console.log(optionsArray, 'OPTIONS ARRAYYYYYYY');
+            optionsArray.sort((optionA, optionB) => {
+                const distanceA = this.args.computeDistanceInKilometers(orderCoordinates, optionA.location.coordinates);
+                const distanceB = this.args.computeDistanceInKilometers(orderCoordinates, optionB.location.coordinates);
+                return distanceA - distanceB;
+            });
+
+            this._options = optionsArray;
+        } else {
+            this._options = _options;
+        }
     };
 
     loadDefaultOptions() {
