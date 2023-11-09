@@ -267,7 +267,6 @@ export default class ModelSelectComponent extends Component {
             const orderCoordinates = this.args.coordinates;
 
             const optionsArray = _options.toArray();
-            console.log(optionsArray, 'OPTIONS ARRAYYYYYYY');
             optionsArray.sort((optionA, optionB) => {
                 const distanceA = this.args.computeDistanceInKilometers(orderCoordinates, optionA.location.coordinates);
                 const distanceB = this.args.computeDistanceInKilometers(orderCoordinates, optionB.location.coordinates);
